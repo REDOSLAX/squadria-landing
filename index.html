@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SquadrIA — Analítica Predictiva para Seguridad Comunal</title>
+  <meta name="description" content="SquadrIA: plataforma de analítica predictiva que ayuda a municipalidades a focalizar patrullajes y prevenir delitos. Postulación Prototypes Universidad Adolfo Ibáñez 2025."/>
+  <meta property="og:title" content="SquadrIA — Analítica Predictiva para Seguridad Comunal" />
+  <meta property="og:description" content="Focaliza patrullajes con IA explicable. Predicción de hotspots por hora, tipo de delito y zona." />
+  <meta property="og:image" content="logo-squadria.jpeg" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="logo-squadria.jpeg" type="image/jpeg" />
+  <link rel="apple-touch-icon" href="logo-squadria.jpeg" />
+  <style>
+    :root{
+      --bg: #0b1020;
+      --panel: #0f172a;
+      --muted: #9ba3b4;
+      --text: #e5eefb;
+      --brand: #38bdf8;
+      --accent: #a78bfa;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(2,8,23,.5);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji","Segoe UI Emoji"; color:var(--text); background: radial-gradient(1200px 600px at 10% -10%, rgba(56,189,248,.15), transparent 60%), radial-gradient(900px 500px at 110% 10%, rgba(167,139,250,.12), transparent 60%), var(--bg);} 
+    a{color:var(--brand)} a:hover{color:#7dd3fc}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;backdrop-filter: blur(10px); background: rgba(11,16,32,.65); border-bottom:1px solid rgba(255,255,255,.06); z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between; gap:16px}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}
+    .logo-img{inline-size:42px;block-size:42px;border-radius:10px;object-fit:contain;background:#fff; padding:4px; box-shadow: var(--shadow)}
+    .nav a{font-weight:600;opacity:.9;text-decoration:none}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.12); background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); box-shadow: var(--shadow)}
+    .chip{display:inline-flex;align-items:center;gap:10px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.15); color:var(--muted); backdrop-filter: blur(6px); background: rgba(15,23,42,.5)}
+    .hero{text-align:center;padding:48px 0}
+    .hero h1{font-size: clamp(28px, 6vw, 54px); line-height:1.05;margin:12px 0 10px}
+    .hero p{font-size: clamp(15px, 1.6vw, 18px); color:var(--muted); max-width:800px; margin:0 auto}
+    .hero-logo{max-width:140px;margin-bottom:10px;border-radius:16px;box-shadow:var(--shadow);background:#fff;padding:8px;display:block;margin-left:auto;margin-right:auto}
+    .chip-centered{display:inline-block;margin-top:6px;margin-bottom:18px;}
+    .hero-img{width:100%;border-radius:var(--radius);margin-top:30px;animation:pulseBorder 4s ease-in-out infinite;box-shadow:0 0 30px rgba(56,189,248,.25);}
+    @keyframes pulseBorder{0%,100%{box-shadow:0 0 30px rgba(56,189,248,.25);}50%{box-shadow:0 0 45px rgba(167,139,250,.35);}}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.35);color:#b8ecff;font-weight:700;animation:glowPulse 3s ease-in-out infinite;}
+    @keyframes glowPulse{0%,100%{box-shadow:0 0 12px rgba(56,189,248,.4);}50%{box-shadow:0 0 24px rgba(167,139,250,.5);}}
+    .pill strong{color:#22d3ee;}
+    .section{padding:40px 0}
+    .grid{display:grid; gap:28px}
+    .grid.cols-3{grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));}
+    .grid.cols-2{grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));}
+    .card{background: var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:20px; box-shadow: var(--shadow); transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
+    .card:hover{transform:translateY(-4px); box-shadow:0 8px 25px rgba(56,189,248,.25); border-color:rgba(56,189,248,.4)}
+    .footer{padding:30px 0;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,.08)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <img class="logo-img" src="logo-squadria.jpeg" alt="Logo SquadrIA" onerror="this.style.display='none'"/>
+        <span>SquadrIA</span>
+      </div>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#que-es">Qué es</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#equipo">Equipo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="container hero" id="inicio">
+      <img src="logo-squadria.jpeg" alt="Logo SquadrIA" class="hero-logo" onerror="this.style.display='none'"/>
+      <span class="chip chip-centered">Postulación — Prototypes Universidad Adolfo Ibáñez 2025</span>
+      <h1>Analítica predictiva <span style="background:linear-gradient(90deg,var(--brand),var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent">para focalizar patrullajes</span> y prevenir delitos</h1>
+      <p>SquadrIA es una plataforma que pronostica <b>hotspots de delito por hora, tipo y zona</b>, entregando tableros accionables para cuadrillas municipales. IA explicable, datos públicos + comunales, y despliegue portable (incluso <b>offline</b>) para decisiones en terreno.</p>
+      <div class="cta">
+        <span class="pill" title="MVP listo"><strong>Estado actual del proyecto:</strong> MVP v1</span>
+      </div>
+      <img src="demo-squadria.png" alt="Vista del sistema prototipo SquadrIA" class="hero-img"/>
+    </section>
+
+    <!-- QUÉ ES -->
+    <section class="container section" id="que-es">
+      <h2>¿Qué es SquadrIA?</h2>
+      <div class="card">
+        <p class="muted">SquadrIA es una plataforma que ayuda a municipalidades a <b>focalizar patrullajes</b> y <b>prevenir delitos</b> mediante analítica predictiva y visualizaciones fáciles de entender. Combina datos públicos y comunales para estimar <b>dónde y cuándo</b> pueden ocurrir incidentes, entregando información clara para planificar patrullajes de forma más eficiente.</p>
+      </div>
+      <div class="grid cols-3" style="margin-top:24px">
+        <div class="card"><h3>Problema</h3><p class="muted">Los recursos de patrullaje son limitados y muchas veces las decisiones se toman de forma reactiva, sin análisis preventivo ni priorización clara.</p></div>
+        <div class="card"><h3>Solución</h3><p class="muted">Sistema que anticipa los lugares con más probabilidad de delitos y recomienda dónde concentrar los patrullajes, entregando apoyo visual para la toma de decisiones.</p></div>
+        <div class="card"><h3>Diferenciación</h3><p class="muted">Funciona sin conexión a internet, puede exportar datos a Excel o HTML, y está diseñado para integrarse fácilmente a la gestión municipal.</p></div>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="container section" id="como-funciona">
+      <h2>Cómo funciona</h2>
+      <div class="grid cols-2" style="margin-top:24px">
+        <div class="card">
+          <h3>Pipeline de datos</h3>
+          <ul class="muted" style="margin:0 0 0 18px">
+            <li>Ingesta: registros históricos (STOP/municipal), POIs, calendario y contexto.</li>
+            <li>Transformación: cálculo de horarios, estacionalidad y distancias a puntos clave.</li>
+            <li>Modelado: entrenamiento de algoritmos que estiman la probabilidad de delitos por zona y franja horaria.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Para el usuario</h3>
+          <ul class="muted" style="margin:0 0 0 18px">
+            <li>Mapa visual que muestra los sectores con mayor riesgo.</li>
+            <li>Indicaciones simples sobre dónde y cuándo reforzar la vigilancia.</li>
+            <li>Exportación de resultados y reportes listos para compartir.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section class="container section" id="equipo">
+      <h2>Equipo</h2>
+      <div class="card" style="padding:0; overflow:hidden">
+        <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:var(--radius)">
+          <iframe src="https://www.youtube-nocookie.com/embed/w3sRnPgmN_s" title="SquadrIA — Video equipo" style="position:absolute; top:0; left:0; width:100%; height:100%;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:10px">Video de presentación del equipo de SquadrIA.</p>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 SquadrIA — Prototypes Universidad Adolfo Ibáñez 2025 · Hecho con ❤️ en Chile</footer>
+</body>
+</html>
